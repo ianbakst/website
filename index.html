@@ -1,13 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ian Bakst</title>
-  </head>
-  <body>
-    <h1>Ian Bakst</h1>
-    <p>AI engineering leader building 0→1 agentic systems that carry revenue.</p>
-    <p>Site under construction — reach me at <a href="mailto:ian@ianbakst.com">ian@ianbakst.com</a>.</p>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Bakst — AI Engineering</title>
+<meta name="description" content="AI engineering leader building 0→1 agentic systems that carry revenue.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site" id="site-header">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="2" y1="12" x2="13" y2="12" stroke="#3F6659" stroke-width="0.9"/>
+        <line x1="2" y1="12" x2="7.5" y2="2.5" stroke="#3F6659" stroke-width="0.9"/>
+        <line x1="13" y1="12" x2="7.5" y2="2.5" stroke="#3F6659" stroke-width="0.9"/>
+        <circle cx="2" cy="12" r="1.5" fill="#3F6659"/>
+        <circle cx="13" cy="12" r="1.5" fill="#3F6659"/>
+        <circle cx="7.5" cy="2.5" r="1.5" fill="#3F6659"/>
+      </svg>
+      IAN BAKST
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav"
+      onclick="const h=document.getElementById('site-header'); h.classList.toggle('open'); this.setAttribute('aria-expanded', h.classList.contains('open'))">MENU</button>
+    <nav class="primary" id="primary-nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="how-i-can-help.html">How I Can Help</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="lattice" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">AI Engineering &amp; Advisory</span>
+    <h1>AI engineering leader building 0→1 agentic systems<br>that carry revenue.</h1>
+    <p class="lede">Architect of the agent platform ~4,000 businesses run their operations on at Topline Pro. Built the agentic systems behind a $50M ARR product line at Babel Street.</p>
+    <div class="btn-row">
+      <a href="contact.html" class="btn btn-primary">Book a call</a>
+      <a href="experience.html" class="btn btn-ghost">See selected experience →</a>
+    </div>
+  </div>
+</section>
+
+<div class="facts">
+  <dl><dt>6.5</dt><dd>Years, data engineering<br>to AI engineering</dd></dl>
+  <dl><dt>$50M</dt><dd>ARR carried by agentic<br>systems built at Babel Street</dd></dl>
+  <dl><dt>Ph.D.</dt><dd>Mechanical Engineering,<br>computational materials science</dd></dl>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">How I Can Help</span>
+    <div class="grid-3">
+      <div class="offer">
+        <h3>0→1 Agentic Systems</h3>
+        <p>Production AI agents, not prototypes — systems built to carry real business load from day one.</p>
+        <span class="proof">Topline Pro — primary agent interface for ~4,000 businesses</span>
+      </div>
+      <div class="offer">
+        <h3>Fractional AI Leadership</h3>
+        <p>Strategy, standards, hiring, and roadmap for teams that need senior AI leadership before they can justify a full-time hire.</p>
+        <span class="proof">Sole AI engineer owning strategy end-to-end at a Series B startup</span>
+      </div>
+      <div class="offer">
+        <h3>MLOps &amp; Eval Infrastructure</h3>
+        <p>The plumbing that makes agentic systems trustworthy in production — deployment pipelines, evaluation, monitoring.</p>
+        <span class="proof">Founded the MLOps practice at Babel Street</span>
+      </div>
+    </div>
+    <div class="btn-row">
+      <a href="how-i-can-help.html" class="btn btn-ghost">More on how I work →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap writing-teaser">
+    <div class="prose">
+      <span class="eyebrow">Writing</span>
+      <p style="margin-bottom:0;">I write about whatever I'm thinking about — a lot of it lately is AI.</p>
+    </div>
+    <a href="https://theshallowstate.substack.com/" target="_blank" rel="noopener" class="btn btn-ghost">Read on Substack →</a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap footer-row">
+    <span class="footer-note">Ian Bakst — Boston, MA</span>
+    <div class="footer-links">
+      <a href="mailto:ian@ianbakst.com">Email</a>
+      <a href="https://github.com/IanBakst" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/IanBakst" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://theshallowstate.substack.com/" target="_blank" rel="noopener">Writing</a>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>

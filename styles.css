@@ -1,0 +1,391 @@
+/* =========================================================
+   Ian Bakst — design tokens
+   Palette: cool paper + graphite ink + oxidized-copper "patina" accent.
+   Type: geometric sans (display) + literary serif (body) + mono (data/labels).
+   Signature: a fine lattice dot-grid — a quiet nod to atomic/crystal
+   structure, echoing the computational-materials-science background.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --paper: #EEF0EC;
+  --paper-raised: #F8F9F6;
+  --ink: #1B211D;
+  --graphite: #5B655E;
+  --graphite-soft: #838C82;
+  --patina: #3F6659;
+  --patina-dark: #2C4A40;
+  --line: #D7DBD1;
+
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --radius: 3px;
+  --content: 700px;
+  --wide: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+::selection { background: var(--patina); color: var(--paper); }
+
+:focus-visible {
+  outline: 2px solid var(--patina);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------- type scale ---------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(2.1rem, 4.4vw, 3.1rem); font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); }
+h3 { font-size: 1.2rem; }
+
+p { margin: 0 0 1.2em; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--patina);
+  display: block;
+  margin-bottom: 0.9em;
+}
+
+.lede {
+  font-size: 1.18rem;
+  color: var(--graphite);
+  max-width: 46ch;
+}
+
+.mono { font-family: var(--font-mono); }
+
+/* ---------- layout ---------- */
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 32px; }
+.prose { max-width: var(--content); }
+
+section { padding: 76px 0; }
+section + section { border-top: 1px solid var(--line); }
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 20px; }
+  section { padding: 52px 0; }
+}
+
+/* ---------- lattice signature texture ---------- */
+
+.lattice {
+  background-image: radial-gradient(var(--graphite-soft) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.28;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.mark {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* ---------- header / nav ---------- */
+
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(238, 240, 236, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+nav.primary { display: flex; gap: 30px; }
+
+nav.primary a {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--graphite);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+nav.primary a:hover { color: var(--ink); }
+
+nav.primary a[aria-current="page"] {
+  color: var(--patina);
+  border-bottom-color: var(--patina);
+}
+
+.nav-toggle { display: none; }
+
+@media (max-width: 720px) {
+  nav.primary {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper-raised);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 20px 20px;
+  }
+  nav.primary a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  nav.primary a:last-child { border-bottom: none; }
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 7px 11px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  header.site.open nav.primary { display: flex; }
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 13px 22px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary { background: var(--patina); color: var(--paper); }
+.btn-primary:hover { background: var(--patina-dark); }
+
+.btn-ghost { border-color: var(--graphite-soft); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+.btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 2.2em; }
+
+/* ---------- hero ---------- */
+
+.hero { position: relative; padding: 92px 0 88px; overflow: hidden; }
+.hero .wrap { position: relative; }
+
+@media (max-width: 640px) { .hero { padding: 56px 0 52px; } }
+
+/* ---------- facts strip ---------- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts dl {
+  margin: 0;
+  padding: 26px 32px;
+  border-left: 1px solid var(--line);
+}
+.facts > dl:first-child { border-left: none; }
+
+.facts dt {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--patina);
+  margin-bottom: 6px;
+}
+.facts dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--graphite);
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+  .facts { grid-template-columns: 1fr; }
+  .facts dl { border-left: none; border-top: 1px solid var(--line); }
+  .facts > dl:first-child { border-top: none; }
+}
+
+/* ---------- cards / offerings ---------- */
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 860px) {
+  .grid-3 { grid-template-columns: 1fr; gap: 36px; }
+}
+
+.offer .eyebrow { margin-bottom: 0.6em; }
+.offer h3 { margin-bottom: 0.5em; }
+.offer p { color: var(--graphite); font-size: 0.98rem; margin-bottom: 0.8em; }
+.offer .proof {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--patina);
+  letter-spacing: 0.01em;
+}
+
+/* ---------- full offering blocks ---------- */
+
+.offer-full {
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 36px;
+}
+.offer-full:first-child { border-top: none; padding-top: 0; }
+.offer-full .proof {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--patina);
+  letter-spacing: 0.01em;
+  display: block;
+  margin-top: 1em;
+}
+.offer-full p { color: var(--graphite); }
+
+@media (max-width: 720px) {
+  .offer-full { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ---------- experience entries ---------- */
+
+.role {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 38px 0;
+  border-top: 1px solid var(--line);
+}
+.role:last-child { border-bottom: 1px solid var(--line); }
+
+.role-meta { font-family: var(--font-mono); font-size: 0.82rem; color: var(--graphite); }
+.role-meta .org { display: block; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+
+.role p { color: var(--ink); margin-bottom: 0; }
+
+@media (max-width: 720px) {
+  .role { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* ---------- footer ---------- */
+
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 44px 0;
+}
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--graphite);
+  text-decoration: none;
+}
+.footer-links a:hover { color: var(--patina); }
+.footer-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--graphite-soft);
+}
+
+/* ---------- writing teaser ---------- */
+
+.writing-teaser {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* ---------- misc page components ---------- */
+
+.page-head { padding: 64px 0 12px; }
+.page-head .eyebrow { margin-bottom: 1em; }
+
+blockquote.pull {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  border-left: 2px solid var(--patina);
+  padding-left: 24px;
+  margin: 1.6em 0;
+  max-width: var(--content);
+}
